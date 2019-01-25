@@ -1,5 +1,6 @@
 package com.narges.sadeghi.recorder;
 
+import android.media.AudioFormat;
 import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.os.Environment;
@@ -69,9 +70,12 @@ public class RecorderFragment extends Fragment {
 
         mediaRecorder = new MediaRecorder();
         mediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+        mediaRecorder.setAudioSamplingRate(44100);
+        mediaRecorder.setAudioChannels(AudioFormat.CHANNEL_OUT_STEREO); // stereo
         mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
         mediaRecorder.setAudioEncoder(MediaRecorder.OutputFormat.AMR_NB);
         mediaRecorder.setOutputFile(audioFile);
+
     }
 
     private class StopOnClickListener implements View.OnClickListener {
